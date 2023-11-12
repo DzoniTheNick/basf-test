@@ -1,4 +1,6 @@
-const daysOfTheWeek = [
+import { CommentDto } from "./dto";
+
+const daysOfTheWeek: string[] = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -8,4 +10,11 @@ const daysOfTheWeek = [
     "Saturday",
 ];
 
-export { daysOfTheWeek };
+const defaultComment: CommentDto = {
+    author: { name: "", picture: "" },
+    id: "0",
+    text: "",
+    timestamp: 0,
+};
+
+export { daysOfTheWeek, defaultComment };

@@ -11,9 +11,4 @@ interface CommentDto {
     timestamp: number;
 }
 
-interface InputParameters {
-    active: boolean;
-    selectedId: number;
-}
-
-export { type CommentDto, type InputParameters };
+export { type CommentDto };
