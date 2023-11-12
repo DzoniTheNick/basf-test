@@ -6,9 +6,9 @@ import Input from "./components/Input/Input";
 import { useAppDispatch } from "./store/store";
 import { setComments } from "./store/feature/comments";
 
-import { getFirstCommentDate } from "./utils/helpers";
-
 import data from "./assets/data/data.json";
+
+import { getFirstCommentDate } from "./utils/helpers";
 
 import "./App.scss";
 

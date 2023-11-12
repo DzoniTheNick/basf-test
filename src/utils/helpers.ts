@@ -1,15 +1,13 @@
 import { daysOfTheWeek } from "./consts";
 import { CommentDto } from "./dto";
 
-import data from "../assets/data/data.json";
-
 import basf from "./../../public/basf.svg";
 import error_1 from "./../assets/images/error-1.svg";
 import error_2 from "./../assets/images/error-2.svg";
 import error_3 from "./../assets/images/error-3.svg";
 import error_4 from "./../assets/images/error-4.svg";
+
 import { store } from "../store/store";
-import { setInputParameters } from "../store/feature/inputParameters";
 import { setComments } from "../store/feature/comments";
 
 const getFirstCommentDate = (data: any): string => {

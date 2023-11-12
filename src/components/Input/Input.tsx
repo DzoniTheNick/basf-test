@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import "./Input.scss";
-import { useAppDispatch, useAppSelector } from "../../store/store";
-import { setInputParameters } from "../../store/feature/inputParameters";
+
 import { defaultComment } from "../../utils/consts";
 import { saveComment } from "../../utils/helpers";
+
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { setInputParameters } from "../../store/feature/inputParameters";
+
+import "./Input.scss";
 
 const Input = () => {
     const dispatch = useAppDispatch();

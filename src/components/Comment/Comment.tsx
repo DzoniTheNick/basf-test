@@ -1,14 +1,16 @@
 import { FC, useEffect, useState } from "react";
-import "./Comment.scss";
+import Linkify from "linkify-react";
+
 import { CommentProps } from "../../utils/props";
 import {
     getCommentRepliesCount,
     getCommentTime,
     getErrorImage,
 } from "../../utils/helpers";
-import Linkify from "linkify-react";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { setInputParameters } from "../../store/feature/inputParameters";
+
+import "./Comment.scss";
 
 const Comment: FC<CommentProps> = ({ comment }) => {
     const dispatch = useAppDispatch();

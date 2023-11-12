@@ -1,9 +1,11 @@
-import "./Container.scss";
-
-import { useAppSelector } from "../../store/store";
-import Root from "../Root/Root";
 import { useEffect, useState } from "react";
+
+import Root from "../Root/Root";
+
 import { CommentDto } from "../../utils/dto";
+import { useAppSelector } from "../../store/store";
+
+import "./Container.scss";
 
 const Container = () => {
     const comments = useAppSelector((state) => state.comments.comments);

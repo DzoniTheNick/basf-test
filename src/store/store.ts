@@ -1,5 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+
 import { commentsSlice } from "./feature/comments";
 import { inputParametersSlice } from "./feature/inputParameters";
 

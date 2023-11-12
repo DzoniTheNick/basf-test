@@ -2,12 +2,12 @@ import { FC, useEffect, useState } from "react";
 
 import Comment from "../Comment/Comment";
 
+import { CommentDto } from "../../utils/dto";
 import { CommentProps } from "../../utils/props";
+import { getCommentReplies } from "../../utils/helpers";
+import { useAppSelector } from "../../store/store";
 
 import "./Root.scss";
-import { getCommentReplies } from "../../utils/helpers";
-import { CommentDto } from "../../utils/dto";
-import { useAppSelector } from "../../store/store";
 
 const Root: FC<CommentProps> = ({ comment }) => {
     const comments = useAppSelector((state) => state.comments.comments);
