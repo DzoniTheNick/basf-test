@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { commentsSlice } from "./feature/comments";
+import { inputParametersSlice } from "./feature/inputParameters";
 
 export const store = configureStore({
-    reducer: { comments: commentsSlice.reducer },
+    reducer: {
+        comments: commentsSlice.reducer,
+        inputParameters: inputParametersSlice.reducer,
+    },
 });
 
 export const useAppDispatch: () => typeof store.dispatch = useDispatch;
