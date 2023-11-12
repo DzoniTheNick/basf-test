@@ -1,0 +1,23 @@
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { Comment } from "../../utils/dto";
+
+interface commentsState {
+    comments: Comment[];
+}
+
+const initialState: commentsState = {
+    comments: [],
+};
+
+export const commentsSlice = createSlice({
+    name: "comments",
+    initialState,
+    reducers: {
+        setComments: (state, action: PayloadAction<Comment[]>) => {
+            state.comments = action.payload;
+        },
+    },
+});
+
+export default commentsSlice.reducer;
+export const { setComments } = commentsSlice.actions;
