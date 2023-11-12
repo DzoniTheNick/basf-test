@@ -3,11 +3,14 @@ import { CommentDto } from "./dto";
 
 import data from "../assets/data/data.json";
 
+import basf from "./../../public/basf.svg";
 import error_1 from "./../assets/images/error-1.svg";
 import error_2 from "./../assets/images/error-2.svg";
 import error_3 from "./../assets/images/error-3.svg";
 import error_4 from "./../assets/images/error-4.svg";
 import { store } from "../store/store";
+import { setInputParameters } from "../store/feature/inputParameters";
+import { setComments } from "../store/feature/comments";
 
 const getFirstCommentDate = (data: any): string => {
     const comments: CommentDto[] = data.data.comments.sort(
@@ -59,7 +62,7 @@ const getErrorImage = (id: number): string => {
 };
 
 const getCommentRepliesCount = (id: number): number => {
-    const comments = data.data.comments;
+    const comments = store.getState().comments.comments;
 
     let count = 0;
 
@@ -86,10 +89,28 @@ const getCommentReplies = (id: number): CommentDto[] => {
     return replies;
 };
 
+const saveComment = (comment: CommentDto) => {
+    const comments = store.getState().comments.comments;
+
+    const newComment: CommentDto = {
+        text: comment.text,
+        timestamp: new Date().getTime(),
+        id: `${comments.length + 1}`,
+        author: {
+            name: "BASF Tester",
+            picture: basf,
+        },
+        parent_id: comment.id,
+    };
+
+    store.dispatch(setComments([...comments, newComment]));
+};
+
 export {
     getFirstCommentDate,
     getCommentTime,
     getErrorImage,
     getCommentRepliesCount,
     getCommentReplies,
+    saveComment,
 };

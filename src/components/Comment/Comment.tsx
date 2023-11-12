@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "./Comment.scss";
 import { CommentProps } from "../../utils/props";
 import {
@@ -7,12 +7,25 @@ import {
     getErrorImage,
 } from "../../utils/helpers";
 import Linkify from "linkify-react";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { setInputParameters } from "../../store/feature/inputParameters";
 
 const Comment: FC<CommentProps> = ({ comment }) => {
+    const dispatch = useAppDispatch();
+    const comments = useAppSelector((state) => state.comments.comments);
+
     const [imageSrc, setImageSrc] = useState<string>(comment.author.picture);
-    const commentRepliesCount = useRef<number>(
+    const [repliesCount, setRepliesCount] = useState<number>(
         getCommentRepliesCount(+comment.id)
     );
+
+    useEffect(() => {
+        setRepliesCount(getCommentRepliesCount(+comment.id));
+    }, [comments]);
+
+    useEffect(() => {
+        console.log(repliesCount);
+    }, [repliesCount]);
 
     return (
         <div className="Comment">
@@ -34,10 +47,13 @@ const Comment: FC<CommentProps> = ({ comment }) => {
                 </div>
                 <div className="comment-footer">
                     <p id="time">{getCommentTime(comment.timestamp)}</p>
-                    <p id="reply">
-                        {commentRepliesCount.current > 0
-                            ? `Reply (${commentRepliesCount.current})`
-                            : "Reply"}
+                    <p
+                        id="reply"
+                        onClick={() => {
+                            dispatch(setInputParameters(comment));
+                        }}
+                    >
+                        {repliesCount > 0 ? `Reply (${repliesCount})` : "Reply"}
                     </p>
                 </div>
             </div>
