@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Comment } from "../../utils/dto";
+import { CommentDto } from "../../utils/dto";
 
 interface commentsState {
-    comments: Comment[];
+    comments: CommentDto[];
 }
 
 const initialState: commentsState = {
@@ -13,7 +13,7 @@ export const commentsSlice = createSlice({
     name: "comments",
     initialState,
     reducers: {
-        setComments: (state, action: PayloadAction<Comment[]>) => {
+        setComments: (state, action: PayloadAction<CommentDto[]>) => {
             state.comments = action.payload;
         },
     },

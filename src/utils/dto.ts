@@ -1,14 +1,14 @@
-interface Author {
+interface AuthorDto {
     name: string;
     picture: string;
 }
 
-interface Comment {
-    id: number;
-    parent_id?: number;
-    author: Author;
+interface CommentDto {
+    id: string;
+    parent_id?: string;
+    author: AuthorDto;
     text: string;
     timestamp: number;
 }
 
-export { type Comment };
+export { type CommentDto };
